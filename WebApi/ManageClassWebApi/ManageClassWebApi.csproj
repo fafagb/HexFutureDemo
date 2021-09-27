@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+   
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WebApiCommon" Version="6.0.0" />
@@ -9,7 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Domain\Domain.ClassModel\Domain.ClassModel.csproj" />
-    <ProjectReference Include="..\..\Domain\Domain.StudentModel\Domain.StudentModel.csproj" />
   </ItemGroup>
 
 </Project>

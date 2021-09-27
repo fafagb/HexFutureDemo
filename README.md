@@ -37,5 +37,19 @@
 # 错误一  System.Exception: 加载Domain.ClassModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null失败！异常：System.Exception: 编译EntAppSoft.Infrastructure.ClassModel.Auto.dll出错：System.UnauthorizedAccessException: Access to the path 'D:\mywork\github\HexFutureDemo\DomainServer\ManageClassDomainServer\bin\Debug\netcoreapp3.1\EntAppSoft.Infrastructure.ClassModel.Auto.pdb' is denied.
 
 
+# 错误一解决方案
+# Class改为GClass
+
+# 命令
+# dotnet  ManageClassWebApiServer.dll --webApiServiceAddress http://localhost:10020 --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181 --zkAppRole GB-ManageClassApi --runScope Core991 --msGroup zw5 --zkTimeOut 1000000000 --mcTimeOut 100000000 --minThreadCount 100 --webApiHelp on --trace off --debugPrefix debugfcj --debugCompile true     --ser protobuf
+
+
+
+
+#  EBook 测试请求串  http://localhost:10020/UserReadEbook/SearchEbookCategoryAsync?categoryName=%E5%8F%A4%E5%85%B8
+
+
+
+# ManageClass 测试请求串  http://localhost:10020/ManageClass/SearchClassCategoryAsync?categoryName=%E9%AB%98%E4%B8%80
 
 
