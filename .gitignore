@@ -1,0 +1,17 @@
+Domain/Domain.ClassModel/bin
+Domain/Domain.ClassModel/obj
+Domain/Domain.ClassStudentRelationshipModel
+Domain/Domain.StudentModel/bin
+Domain/Domain.StudentModel/obj
+Domain/Impl/Domain.ClassModel.Service.Impl/bin
+Domain/Impl/Domain.ClassModel.Service.Impl/obj
+Domain/Impl/Domain.ClassStudentRelationshipModel.Service.Impl
+Domain/Impl/Domain.StudentModel.Service.Impl/bin
+Domain/Impl/Domain.StudentModel.Service.Impl/obj
+DomainServer/ManageClassDomainServer/bin
+DomainServer/ManageClassDomainServer/obj
+WebApi/ManageClassWebApi/bin
+WebApi/ManageClassWebApi/obj
+WebApi/ManageClassWebApiServer/bin
+WebApi/ManageClassWebApiServer/obj
+.vs
