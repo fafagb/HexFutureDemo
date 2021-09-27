@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ManageClassWebApiServer": {
+      "commandName": "Project",
+      "commandLineArgs": "--webApiServiceAddress http://localhost:10020 --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181 --zkAppRole GB-ManageClassApi --runScope Core991 --msGroup zw5 --zkTimeOut 1000000000 --mcTimeOut 100000000 --minThreadCount 100 --webApiHelp on --trace off --debugPrefix debugfcj --debugCompile true     --ser protobuf"
+    }
+  }
+}

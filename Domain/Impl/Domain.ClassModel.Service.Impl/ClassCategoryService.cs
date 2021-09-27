@@ -18,10 +18,10 @@ namespace Domain.ClassModel.Service.Impl
             try
             {
                 //查询年级是否存在
-                var ebookCategory = await this.Where(entity => entity.Name == classCategoryName).Top(10).FindTopAsync();
+                var classCategory = await this.Where(entity => entity.Name == classCategoryName).Top(10).FindTopAsync();
                 //存在返回年级Id
-                if (ebookCategory.Count > 0)
-                    categoryId = ebookCategory[0].Key;
+                if (classCategory.Count > 0)
+                    categoryId = classCategory[0].Key;
                 //不存在新建年级
                 else
                 {
@@ -102,7 +102,7 @@ namespace Domain.ClassModel.Service.Impl
             }
             catch (Exception ex)
             {
-                LogErrorAsync($"修改电子书分类名称异常信息{ex.Message}");
+                LogErrorAsync($"修改年级异常信息{ex.Message}");
             }
             return res;
         }
