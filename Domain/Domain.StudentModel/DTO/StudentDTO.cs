@@ -12,8 +12,21 @@ namespace Domain.StudentModel.DTO
     public  class StudentDTO
     {
 
-        public long StudentId { get; set; }
         public String StudentName { get; set; }
 
+
+        public String Sex { get; set; }
+
+        public String StudentCode { get; set; }
+
+
+  
+
     }
+
+  
+
+
+
+
 }

@@ -21,8 +21,8 @@ namespace Domain.ClassModel.Relation
         [Column(Name = "ClassID", CanBeNull = false, DbType = "SqlDbType.BigInt", Direction = "In", Size = 8)]
         public GClass GClass
         {
-            get { return LazyLoad("ClassStudentRelation_GClass") != null ? LazyLoad("ClassStudentRelation_GClass") as GClass : null; }
-            set { SetLazyLoadValue("ClassStudentRelation_GClass", value); }
+            get { return LazyLoad("ClassStudentRelationship_GClass") != null ? LazyLoad("ClassStudentRelationship_GClass") as GClass : null; }
+            set { SetLazyLoadValue("ClassStudentRelationship_GClass", value); }
         }
 
         [Column(Name = "StudentID", CanBeNull = false, DbType = "SqlDbType.BigInt", Direction = "In", Size = 8)]

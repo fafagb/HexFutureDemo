@@ -1,0 +1,158 @@
+2021-09-28 10:33:04,672 [152154] [5] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/CreateClassAsync
+classDTO:Domain.ClassModel.DTO.ClassDTO,
+System.AggregateException: One or more errors occurred. (Exception of type 'org.apache.zookeeper.KeeperException+ConnectionLossException' was thrown.)
+ ---> org.apache.zookeeper.KeeperException+ConnectionLossException: Exception of type 'org.apache.zookeeper.KeeperException+ConnectionLossException' was thrown.
+   at org.apache.zookeeper.ZooKeeper.existsAsync(String path, Watcher watcher) in D:\ZooKeeper\src\csharp\src\ZooKeeperNetEx\zookeeper\ZooKeeper.cs:line 748
+   --- End of inner exception stack trace ---
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.GetDMSIFDBy(Type interfaceType)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.CreateClassAsync(ClassDTO classDTO) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 28
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：GetAllQueryParametersIndex and count must refer to a location within the string. (Parameter 'count')
+
+2021-09-28 10:35:15,024 [17052] [12] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/CreateClassAsync
+classDTO:Domain.ClassModel.DTO.ClassDTO,
+System.Exception: 6024:There are no available micro domain service for Domain.ClassModel.Service.Interface.IClass in runscope Core991 at msgroup zw5.
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.GetURLByDllOrType(Type dllortypeType, String& dllortypeName)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildNLBExtRWS[T](DMSInterfaceDescription dmsIFDescription)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.CreateClassAsync(ClassDTO classDTO) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 28
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：GetAllQueryParametersIndex and count must refer to a location within the string. (Parameter 'count')
+
+2021-09-28 14:34:23,293 [55245] [17] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/SetClassStudentRelationshipAsync
+createStudentAndRelationship:Domain.ClassModel.DTO.CreateStudentAndRelationshipDTO,
+System.TypeLoadException: Method 'SetClassStudentRelationshipAsync' in type 'Domain.ClassModel.Service.Interface.ClassStudentRelationshipClientProxy' from assembly 'p_Domain.ClassModel.Service.Interface_ClassStudentRelationshipClientProxy.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+   at System.Reflection.RuntimeAssembly.GetType(QCallAssembly assembly, String name, Boolean throwOnError, Boolean ignoreCase, ObjectHandleOnStack type, ObjectHandleOnStack keepAlive, ObjectHandleOnStack assemblyLoadContext)
+   at System.Reflection.RuntimeAssembly.GetType(String name, Boolean throwOnError, Boolean ignoreCase)
+   at System.Reflection.Assembly.GetType(String name)
+   at EntAppFrameWork.RPC.ClientProxyGenerater.Build(Type interfaceType)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient(Type interfaceType, String url)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient[T](String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildIRPCClientProxy[T](DMSInterfaceDescription dmsIFDescription, String fullName, String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildNLBExtRWS[T](DMSInterfaceDescription dmsIFDescription)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.SetClassStudentRelationshipAsync(CreateStudentAndRelationshipDTO createStudentAndRelationship) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 194
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：GetAllQueryParametersIndex and count must refer to a location within the string. (Parameter 'count')
+
+2021-09-28 16:22:44,122 [50594] [24] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/SetClassStudentRelationshipAsync
+classStudentRelationshipDTO:Domain.ClassModel.DTO.ClassStudentRelationshipDTO,
+System.Exception: 6024:There are no available micro domain service for Domain.ClassModel.Service.Interface.IClassStudentRelationship in runscope Core991 at msgroup zw5.
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.GetURLByDllOrType(Type dllortypeType, String& dllortypeName)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildNLBExtRWS[T](DMSInterfaceDescription dmsIFDescription)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.SetClassStudentRelationshipAsync(ClassStudentRelationshipDTO classStudentRelationshipDTO) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 181
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：GetAllQueryParametersIndex and count must refer to a location within the string. (Parameter 'count')
+
+2021-09-28 20:04:10,008 [174131] [12] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/GetStudentListByMulCons?gradeId=21612276031624&className=%E4%B8%80%E7%8F%AD
+gradeId:21612276031624,className:一班,
+System.TypeLoadException: Method 'SelectStudentByMulCons' in type 'Domain.ClassModel.Service.Interface.ClassClientProxy' from assembly 'p_Domain.ClassModel.Service.Interface_ClassClientProxy.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+   at System.Reflection.RuntimeAssembly.GetType(QCallAssembly assembly, String name, Boolean throwOnError, Boolean ignoreCase, ObjectHandleOnStack type, ObjectHandleOnStack keepAlive, ObjectHandleOnStack assemblyLoadContext)
+   at System.Reflection.RuntimeAssembly.GetType(String name, Boolean throwOnError, Boolean ignoreCase)
+   at System.Reflection.Assembly.GetType(String name)
+   at EntAppFrameWork.RPC.ClientProxyGenerater.Build(Type interfaceType)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient(Type interfaceType, String url)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient[T](String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildIRPCClientProxy[T](DMSInterfaceDescription dmsIFDescription, String fullName, String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildNLBExtRWS[T](DMSInterfaceDescription dmsIFDescription)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.GetStudentListByMulCons(Int64 gradeId, String className, String studentName) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 91
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：gradeId=21612276031624&className=%E4%B8%80%E7%8F%AD
+
+2021-09-28 20:04:26,434 [190557] [12] WARN  warninfo  - EntAppFrameWorkLog：http://localhost:10020/ManageClass/GetStudentListByMulCons?gradeId=21612276031624&className=%E4%B8%80%E7%8F%AD
+gradeId:21612276031624,className:一班,
+System.TypeLoadException: Method 'SelectStudentByMulCons' in type 'Domain.ClassModel.Service.Interface.ClassClientProxy' from assembly 'p_Domain.ClassModel.Service.Interface_ClassClientProxy.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' does not have an implementation.
+   at System.Reflection.RuntimeAssembly.GetType(QCallAssembly assembly, String name, Boolean throwOnError, Boolean ignoreCase, ObjectHandleOnStack type, ObjectHandleOnStack keepAlive, ObjectHandleOnStack assemblyLoadContext)
+   at System.Reflection.RuntimeAssembly.GetType(String name, Boolean throwOnError, Boolean ignoreCase)
+   at System.Reflection.Assembly.GetType(String name)
+   at EntAppFrameWork.RPC.ClientProxyGenerater.Build(Type interfaceType)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient(Type interfaceType, String url)
+   at EntAppFrameWork.RPC.ClientProxyFactory.GetClient[T](String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildIRPCClientProxy[T](DMSInterfaceDescription dmsIFDescription, String fullName, String url)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.BuildNLBExtRWS[T](DMSInterfaceDescription dmsIFDescription)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T](Boolean localExc)
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.NoStaticExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.ExtenedService[T]()
+   at EntAppFrameWork.DomainModel.Core.Facade.DomainModelFacade.InvokeService[T]()
+   at WebApiCommon.ApiBaseController.InvokeService[T]()
+   at ManageClassWebApi.Controllers.ManageClassController.GetStudentListByMulCons(Int64 gradeId, String className, String studentName) in D:\mywork\github\HexFutureDemo\WebApi\ManageClassWebApi\Controllers\ManageClassController.cs:line 91
+   at lambda_method(Closure , Object )
+   at Microsoft.Extensions.Internal.ObjectMethodExecutorAwaitable.Awaiter.GetResult()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location where exception was thrown ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextExceptionFilterAsync>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+参数：gradeId=21612276031624&className=%E4%B8%80%E7%8F%AD
+

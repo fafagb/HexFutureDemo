@@ -10,43 +10,43 @@ using System.Threading.Tasks;
 
 namespace Domain.ClassModel.Service.Impl
 {
-    public class ClassCategoryService : DomainServiceExtBase<ClassCategory, long>, IClassCategory
+    public class GradeService : DomainServiceExtBase<Grade, long>, IGrade
     {
-        public async Task<long> CreateClassCategoryAsync(string classCategoryName)
+        public async Task<long> CreateGradeAsync(string gradeName)
         {
-            long categoryId = 0;
+            long gradeId = 0;
             try
             {
                 //查询年级是否存在
-                var classCategory = await this.Where(entity => entity.Name == classCategoryName).Top(10).FindTopAsync();
+                var entity = await this.Where(entity => entity.Name == gradeName).Top(10).FindTopAsync();
                 //存在返回年级Id
-                if (classCategory.Count > 0)
-                    categoryId = classCategory[0].Key;
+                if (entity.Count > 0)
+                    gradeId = entity[0].Key;
                 //不存在新建年级
                 else
                 {
-                    ClassCategory category = new ClassCategory();
-                    category.Name = classCategoryName;
-                    bool result = await this.SaveAsync(category);
+                    Grade grade = new Grade();
+                    grade.Name = gradeName;
+                    bool result = await this.SaveAsync(grade);
                     if (result)
-                        categoryId = category.Key;
+                        gradeId = grade.Key;
                 }
             }
             catch (Exception ex)
             {
                 LogErrorAsync($"创建年级异常信息{ex.Message}");
             }
-            return categoryId;
+            return gradeId;
         }
 
-        public async Task<bool> SaveClassCategoryToRedisAsync(IList<ClassCategoryDTO> classCategories)
+        public async Task<bool> SaveGradeToRedisAsync(IList<GradeDTO> grades)
         {
             bool res = false;
-            string redisKey = "ClassCategory";
+            string redisKey = "Grade";
             try
             {
                 res = await this.ExecRedisAsync("DomainCacheDBPool", async rc =>
-                     await rc.SetAsync(redisKey, JsonConvert.SerializeObject(classCategories))
+                     await rc.SetAsync(redisKey, JsonConvert.SerializeObject(grades))
                 );
             }
             catch (Exception ex)
@@ -56,13 +56,13 @@ namespace Domain.ClassModel.Service.Impl
             return res;
         }
 
-        public async Task<IList<ClassCategory>> SearchClassCategoriesAsync(string categoryName)
+        public async Task<IList<Grade>> SearchClassCategoriesAsync(string gradeName)
         {
-            IList<ClassCategory> classCategories = new List<ClassCategory>();
+            IList<Grade> grades = new List<Grade>();
             try
             {
-                classCategories = await Where(
-                       GreaterEqualThan("Name", categoryName))
+                grades = await Where(
+                       GreaterEqualThan("Name", gradeName))
                       .Start(1)
                       .Rows(20)
                       .SearchNPAsync();
@@ -71,17 +71,17 @@ namespace Domain.ClassModel.Service.Impl
             {
                 LogErrorAsync($"获取年级异常信息{ex.Message}");
             }
-            return classCategories;
+            return grades;
         }
 
-        public async Task<IList<ClassCategoryDTO>> SearchClassCategoryFromRedisAsync()
+        public async Task<IList<GradeDTO>> SearchGradeFromRedisAsync()
         {
-            IList<ClassCategoryDTO> list = new List<ClassCategoryDTO>();
-            string redisKey = "ClassCategory";
+            IList<GradeDTO> list = new List<GradeDTO>();
+            string redisKey = "Grade";
             try
             {
                 list = await this.ExecRedisAsync("DomainCacheDBPool", async rc =>
-                     await rc.GetAsync<IList<ClassCategoryDTO>>(redisKey)
+                     await rc.GetAsync<IList<GradeDTO>>(redisKey)
                 );
             }
             catch (Exception ex)
@@ -91,14 +91,14 @@ namespace Domain.ClassModel.Service.Impl
             return list;
         }
 
-        public async Task<bool> UpdateClassCategotyNameAsync(long categoryId, string categoryName)
+        public async Task<bool> UpdateGradeNameAsync(long gradeId, string gradeName)
         {
             bool res = false;
             try
             {
-                ClassCategory classCategory = await GetSnapByKeyAsync(categoryId);
-                classCategory.Name = categoryName;
-                res = await this.SaveAsync(classCategory);
+                Grade Grade = await GetSnapByKeyAsync(gradeId);
+                Grade.Name = gradeName;
+                res = await this.SaveAsync(Grade);
             }
             catch (Exception ex)
             {

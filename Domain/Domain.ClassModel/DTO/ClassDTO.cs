@@ -17,22 +17,28 @@ namespace Domain.ClassModel.DTO
         /// <summary>
         /// 年级名称
         /// </summary>
-        public string ClassCategoryName { get; set; }
+        public string GradeName { get; set; }
 
     }
+
+
+
+
+
+
     [Serializable]
     [ProtobufSerializable]
-    public class ClassCategoryDTO
+    public class GradeDTO
     {
         /// <summary>
         /// 年级Id
         /// </summary>
-        public long ClassCategoryId { get; set; }
+        public long GradeId { get; set; }
 
         /// <summary>
         /// 年级名称
         /// </summary>
-        public string ClassCategoryName { get; set; }
+        public string GradeName { get; set; }
     }
 
 

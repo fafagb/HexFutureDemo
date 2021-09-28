@@ -1,11 +1,14 @@
 ﻿using Domain.ClassModel.Core;
 using Domain.ClassModel.DTO;
 using Domain.ClassModel.Service.Interface;
+using Domain.StudentModel.Service.Interface;
 using EntAppFrameWork.DomainModel.Core.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
+using Domain.StudentModel.Core;
 
 namespace Domain.ClassModel.Service.Impl
 {
@@ -18,7 +21,7 @@ namespace Domain.ClassModel.Service.Impl
 
     public class ClassService : DomainServiceExtBase<GClass, long>, IClass
     {
-        public async Task<bool> CreateClassAsync(ClassDTO classDTO)
+        public async Task<bool> CreateClassAsync(string className, string grade)
         {
 
             bool res = false;
@@ -26,17 +29,24 @@ namespace Domain.ClassModel.Service.Impl
             {
                 await this.TranAndSCExecuterAsync(async () =>
                 {
-                    long categoryId = await this.InvokeService<IClassCategory>().CreateClassCategoryAsync(classDTO.ClassCategoryName);
+                    long gradeId = await this.InvokeService<IGrade>().CreateGradeAsync(grade);
                     // 每个年级下班级名称不能重复
-                    var entity = this.Where(x => x.Name == classDTO.ClassName && x.ClassCategory.Key == categoryId);
-                    if (entity != null) return;
+
+
+                    var entity = await this.Where(entity => entity.Name == className && entity.Grade.Key == gradeId).Top(1).FindTopAsync();
+
+                    if (entity.Count > 0) return;
+
 
                     GClass cla = new GClass();
-                    cla.ClassCategory = new ClassCategory(categoryId);
-                    cla.Name = classDTO.ClassName;
+                    cla.Grade = new Grade(gradeId);
+                    cla.Name = className;
+
+
+
                     bool saveClassResult = await this.SaveAsync(cla);
 
-                    res = categoryId > 0 && saveClassResult;
+                    res = gradeId > 0 && saveClassResult;
                 });
             }
             catch (Exception ex)
@@ -69,13 +79,19 @@ namespace Domain.ClassModel.Service.Impl
 
         //3、单表查询  多条件查询：①年级、②班级名称模糊（可为空）
         //（1）查询某年级下班级列表
-        public async Task<IList<GClass>> SearchClassesAsync(long id, string className)
+        public async Task<IList<GClass>> SearchClassesAsync(long gradeId, string className)
         {
             IList<GClass> list = new List<GClass>();
             try
             {
 
-                list = await Where(x => x.ClassCategory.Key == id&&x.Name.Contains(className)).SearchNPAsync();
+                //   list = await Where(x => x.Grade.Key == gradeId && x.Name.Contains(className)).SearchNPAsync();
+                list = await Where(x => x.Grade.Key == gradeId).Where(
+                     Like<GClass>(m => m.Name.Contains(className), true))
+                     .SearchNPAsync();
+
+
+
 
             }
             catch (Exception ex)
@@ -100,5 +116,23 @@ namespace Domain.ClassModel.Service.Impl
             }
             return res;
         }
+
+
+
+        public async Task<IList<Student>> SelectStudentByMulCons(long gradeId, string className, string studentName)
+        {
+
+
+            var list = await SearchClassesAsync(gradeId, className);
+            var classIds = list.Select(x => x.Key).ToList();
+            var students = await this.InvokeService<IClassStudentRelationship>().SearchClassStudentRelationshipAsync(classIds);
+
+            return await this.InvokeService<IStudent>().SelectStudent(students);
+
+
+        }
+
+
+
     }
 }

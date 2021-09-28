@@ -21,11 +21,11 @@ namespace Domain.ClassModel.Core
         /// <summary>
         /// 所属年级
         /// </summary>
-        [Column(Name = "ClassCategoryID", CanBeNull = true, DbType = "SqlDbType.BigInt", Direction = "In", Size = 8)]
-        public ClassCategory ClassCategory
+        [Column(Name = "GradeID", CanBeNull = true, DbType = "SqlDbType.BigInt", Direction = "In", Size = 8)]
+        public Grade Grade
         {
-            get { return LazyLoad("Class_ClassCategory") != null ? LazyLoad("Class_ClassCategory") as ClassCategory : null; }
-            set { SetLazyLoadValue("Class_ClassCategory", value); }
+            get { return LazyLoad("GClass_Grade") != null ? LazyLoad("GClass_Grade") as Grade : null; }
+            set { SetLazyLoadValue("GClass_Grade", value); }
         }
     }
 }

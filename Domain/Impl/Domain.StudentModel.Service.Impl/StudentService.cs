@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.StudentModel.Core;
 using Domain.StudentModel.DTO;
@@ -8,28 +9,43 @@ namespace Domain.StudentModel.Service.Impl
 {
     public class StudentService : DomainServiceExtBase<Student, long>, IStudent
     {
-        public async Task<bool> CreateStudent(StudentDTO studentDTO)
+        public async Task<long> CreateStudent(StudentDTO studentDTO)
         {
-            bool res = false;
+            long studentId = 0;
             try
             {
-                await this.TranAndSCExecuterAsync(async () =>
-                {
-                    
 
-                    Student student = new Student();
+                var entity = await this.Where(entity => entity.Name == studentDTO.StudentCode).Top(1).FindTopAsync();
+                if (entity.Count > 0) return studentId;
 
-                    student.Name = studentDTO.StudentName;
-                    bool saveClassResult = await this.SaveAsync(student);
+                Student student = new Student();
 
-                    res = saveClassResult;
-                });
+                student.Name = studentDTO.StudentName;
+                student.Sex = studentDTO.Sex;
+                student.StudentCode = studentDTO.StudentCode;
+                bool saveClassResult = await this.SaveAsync(student);
+
+                studentId = student.Key;
+
+
             }
             catch (Exception ex)
             {
-                LogErrorAsync($"添加班级异常信息{ex.Message.ToString()}");
+                LogErrorAsync($"添加学生异常信息{ex.Message.ToString()}");
             }
-            return res;
+            return studentId;
         }
+
+        public async Task<IList<Student>> SelectStudent(List<long> students)
+        {
+           return await Where(x => students.Equals(x.Key)).SearchNPAsync();
+            
+            
+                    
+        }
+
+
+
+
     }
 }

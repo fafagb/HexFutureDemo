@@ -1,4 +1,8 @@
 # HexFutureDemo
+
+# 项目说明
+# 
+
 # github托管地址：https://github.com/fafagb/HexFutureDemo.git
 # vscode文件夹管理
 # dotnet项目框架搭建命令
@@ -14,7 +18,7 @@
 # dotnet  new  classlib   -n  Domain.ClassStudentRelationshipModel.Service.Impl
 
 # cd D:\mywork\github\HexFutureDemo\DomainServer
-# dotnet  new  console   -n  ManageClassDomainServer
+# dotnet  new  console   -n  ManageClassDomainServer   纠正===》  dotnet  new  webapi   -n  ManageClassDomainServer
 
 #  D:\mywork\github\HexFutureDemo\WebApi
 
@@ -52,4 +56,17 @@
 
 # ManageClass 测试请求串  http://localhost:10020/ManageClass/SearchClassCategoryAsync?categoryName=%E9%AB%98%E4%B8%80
 
+
+
+
+# 存在的问题，dotnetcore的控制台经常会假死，需要按回车
+# zookeeper经常会连接超时
+
+# probufer 在http传输过程中更安全，但是现在到后端传输需要二次转换
+
+
+# 要删除代理文件 p_Domain.ClassModel.Service.Interface_ClassClientProxy.dll
+
+
+#  //   list = await Where(x => x.Grade.Key == gradeId && x.Name.Contains(className)).SearchNPAsync();   只能左模糊  linq是左右都模糊
 

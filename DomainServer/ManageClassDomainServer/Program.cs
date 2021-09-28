@@ -7,6 +7,8 @@ namespace ManageClassDomainServer
     {
         static void Main(string[] args)
         {
+            
+            
             new DomainHost().Run(args);
         }
     }
