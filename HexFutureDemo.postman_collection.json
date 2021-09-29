@@ -1,0 +1,582 @@
+{
+	"info": {
+		"_postman_id": "93e21b07-33c9-4f90-bdb2-78989d6f25c7",
+		"name": "HexFutureDemo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "单表保存",
+			"item": [
+				{
+					"name": "创建年级",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/CreateGradeAsync?gradeName=高一",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"CreateGradeAsync"
+							],
+							"query": [
+								{
+									"key": "gradeName",
+									"value": "高一"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建班级(年级存在)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassName\": \"一班\",\r\n    \"GradeName\": \"高一\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/CreateClassAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"CreateClassAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建班级(年级不存在)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassName\": \"一班\",\r\n    \"GradeName\": \"高一\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/CreateClassAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"CreateClassAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询班级列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchClassesAsync?gradeId=21612276031624&className=一班",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchClassesAsync"
+							],
+							"query": [
+								{
+									"key": "gradeId",
+									"value": "21612276031624"
+								},
+								{
+									"key": "className",
+									"value": "一班"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改班级",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassName\": \"一班\",\r\n    \"GradeName\": \"高一\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/DeleteClassAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"DeleteClassAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除班级",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassName\": \"一班\",\r\n    \"GradeName\": \"高一\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/DeleteClassAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"DeleteClassAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "创建学生",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassName\": \"一班\",\r\n    \"GradeName\": \"高一\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/DeleteClassAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"DeleteClassAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "学生调班",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassId\": \"21612276031624\",\r\n    \"StudentId\": \"21612276031655\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SetClassStudentRelationshipAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SetClassStudentRelationshipAsync"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "（1）核心模型； 添加、修改班级（每个年级下班级名称不能重复）\r\n（2）关联模型：学生调班"
+		},
+		{
+			"name": "多表保存（事务）",
+			"item": [
+				{
+					"name": "创建学生并设置班级",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ClassId\": \"21612276031624\",\r\n    \"StudentName\":\"耿彬2\",\r\n    \"Sex\":\"男\",\r\n    \"StudentCode\":\"20082015035\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/CreateClassStudentRelationshipAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"CreateClassStudentRelationshipAsync"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "（1）添加学生信息，并分配班级（保存学生信息：学籍号不可重复、并关联班级）"
+		},
+		{
+			"name": "单表查询",
+			"item": [
+				{
+					"name": "查询班级列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchClassesAsync?gradeId=21612276031624&className=一班",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchClassesAsync"
+							],
+							"query": [
+								{
+									"key": "gradeId",
+									"value": "21612276031624"
+								},
+								{
+									"key": "className",
+									"value": "一班"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "单表查询  多条件查询：①年级、②班级名称模糊（可为空）\r\n\t（1）查询某年级下班级列表\r\n"
+		},
+		{
+			"name": "多表查询",
+			"item": [
+				{
+					"name": "查询某年级下学生列表",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchClassesAsync?gradeId=21612276031624&className=一班",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchClassesAsync"
+							],
+							"query": [
+								{
+									"key": "gradeId",
+									"value": "21612276031624"
+								},
+								{
+									"key": "className",
+									"value": "一班"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "多表查询  多条件查询：①年级、②班级名称（可为空）、③学生名称（可为空）\r\n\t（1）查询某年级下学生列表"
+		},
+		{
+			"name": "单表删除",
+			"item": [
+				{
+					"name": "移除学生班级",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchClassesAsync?gradeId=21612276031624&className=一班",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchClassesAsync"
+							],
+							"query": [
+								{
+									"key": "gradeId",
+									"value": "21612276031624"
+								},
+								{
+									"key": "className",
+									"value": "一班"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "5、单表删除\r\n\t（1）学生移除班级\r\n"
+		},
+		{
+			"name": "多表删除",
+			"item": [
+				{
+					"name": "移除学生班级",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/DeleteClassAsync?classId=21612276043445",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"DeleteClassAsync"
+							],
+							"query": [
+								{
+									"key": "classId",
+									"value": "21612276043445"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "6、多表删除（事务）\r\n\t（1）删除班级，并移除班级下的学生\r\n"
+		},
+		{
+			"name": "RedisCURD",
+			"item": [
+				{
+					"name": "保存年级列表（key=Grade）",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SaveGradeToRedisAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SaveGradeToRedisAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询年级列表（key=Grade）",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchGradeFromRedisAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchGradeFromRedisAsync"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "删除年级列表（key=Grade）",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10020/ManageClass/SearchGradeFromRedisAsync",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10020",
+							"path": [
+								"ManageClass",
+								"SearchGradeFromRedisAsync"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "7、redis\r\n\t增删改查\r\n"
+		}
+	]
+}
