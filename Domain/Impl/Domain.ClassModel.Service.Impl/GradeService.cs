@@ -104,7 +104,7 @@ namespace Domain.ClassModel.Service.Impl
             }
             catch (Exception ex)
             {
-                LogErrorAsync($"从redis获取年级异常信息{ex.Message}");
+                LogErrorAsync($"从redis删除年级异常信息{ex.Message}");
             }
             return res;
         }
