@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using Domain.StudentModel.Core;
+using EntAppFrameWork.DomainModel.Core.Specification;
 
 namespace Domain.ClassModel.Service.Impl
 {
@@ -79,7 +80,7 @@ namespace Domain.ClassModel.Service.Impl
                     res = await RemoveAsync(new GClass(classId));
 
 
-                  
+
 
                 });
             }
@@ -100,9 +101,20 @@ namespace Domain.ClassModel.Service.Impl
             {
 
                 //   list = await Where(x => x.Grade.Key == gradeId && x.Name.Contains(className)).SearchNPAsync();
-                list = await Where(x => x.Grade.Key == gradeId).Where(
-                     Like<GClass>(m => m.Name.Contains(className), true))
-                     .SearchNPAsync();
+
+                IList<ISpecification> specList = new List<ISpecification>();
+                specList.Add(Equal<GClass>(m => m.Grade.Key== gradeId));
+                if (!string.IsNullOrEmpty(className))
+                {
+                    specList.Add(Like<GClass>(m => m.Name.Contains(className), true));
+                }
+
+                list = await this.Where<GClass, long>(And<GClass>(specList)).SearchNPAsync();
+
+
+                //list = await Where(x => x.Grade.Key == gradeId).Where(
+                //     Like<GClass>(m => m.Name.Contains(className), true))
+                //     .SearchNPAsync();
 
 
 

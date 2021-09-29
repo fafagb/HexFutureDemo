@@ -28,10 +28,10 @@
     * System.Exception: 加载Domain.ClassModel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null失败！异常：System.Exception: 编译EntAppSoft.Infrastructure.ClassModel.Auto.dll出错：System.UnauthorizedAccessException: Access to the path 'D:\mywork\github\HexFutureDemo\DomainServer\ManageClassDomainServer\bin\Debug\netcoreapp3.1\EntAppSoft.Infrastructure.ClassModel.Auto.pdb' is denied.
     * 解决方案 Class改为GClass
     * dotnetcore的控制台经常会假死
-    * 解决方案 需要按回车激活UI线程
+    * 解决方案 用powershell
     * zookeeper经常会连接超时
     * 代码改动要删除代理文件 p_Domain.ClassModel.Service.Interface_ClassClientProxy.dll 后进行调试
     * list = await Where(x => x.Grade.Key == gradeId && x.Name.Contains(className)).SearchNPAsync();   只能左模糊  linq是左右都模糊
-    * 需要用变量接受参数  string code = studentDTO.StudentCode;var entity = await this.Where(entity => entity.StudentCode == code).Top(1).FindTopAsync();
+    * 需要定义新变量接受参数  string code = studentDTO.StudentCode;var entity = await this.Where(entity => entity.StudentCode == code).Top(1).FindTopAsync();
 ![alt 报错1](file:///D:/mywork/github/HexFutureDemo/img/%E6%8A%A5%E9%94%991.png "报错1")
 ![alt 报错2](file:///D:/mywork/github/HexFutureDemo/img/报错2.png "报错2")
