@@ -8,7 +8,7 @@ using EntAppFrameWork.DomainModel.Core.Entity;
 namespace Domain.ClassModel.Relation
 {
     /// <summary>
-    /// 阅读记录
+    /// 班级学生关系
     /// </summary>
     [Serializable]
     [Table(IsAutoCreateTable = true, Name = "GB_ClassStudentRelationship", Key = "ClassStudentRelationshipID", KeyType = typeof(Int64), KeyDbType = "SqlDbType.BigInt", KeySize = 8)]
