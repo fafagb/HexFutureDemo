@@ -45,9 +45,10 @@
 # Class改为GClass
 
 # 命令
-# dotnet  ManageClassWebApiServer.dll --webApiServiceAddress http://localhost:10020 --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181 --zkAppRole GB-ManageClassApi --runScope Core991 --msGroup zw5 --zkTimeOut 1000000000 --mcTimeOut 100000000 --minThreadCount 100 --webApiHelp on --trace off --debugPrefix debugfcj --debugCompile true     --ser protobuf
+# dotnet  ManageClassWebApiServer.dll --webApiServiceAddress http://localhost:10020 --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181 --zkAppRole GB-ManageClassApi --runScope Core991 --msGroup zw5 --zkTimeOut 1000000000 --mcTimeOut 100000000 --minThreadCount 100 --webApiHelp on --trace off --debugPrefix debuggb --debugCompile true     --ser protobuf
 
 
+# dotnet  ManageClassDomainServer.dll --serviceName manageClass-gb --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181        --zkAppRole Demo-ReadEbook   --aop off  --minThreadCount 10 --serviceAddress  debuggb:tcp://localhost:20010  --runScope Core991 --msGroup zw5 --zkTimeOut 5000 --mcTimeOut 1000000  --debugCompile true    --trace file   --ser protobuf  --KPversion  2   --psapp v2
 
 
 #  EBook 测试请求串  http://localhost:10020/UserReadEbook/SearchEbookCategoryAsync?categoryName=%E5%8F%A4%E5%85%B8
@@ -70,3 +71,6 @@
 
 #  //   list = await Where(x => x.Grade.Key == gradeId && x.Name.Contains(className)).SearchNPAsync();   只能左模糊  linq是左右都模糊
 
+
+
+#   需要用变量接受参数  string code = studentDTO.StudentCode;var entity = await this.Where(entity => entity.StudentCode == code).Top(1).FindTopAsync();

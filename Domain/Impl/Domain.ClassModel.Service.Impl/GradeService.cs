@@ -80,9 +80,11 @@ namespace Domain.ClassModel.Service.Impl
             string redisKey = "Grade";
             try
             {
-                list = await this.ExecRedisAsync("DomainCacheDBPool", async rc =>
-                     await rc.GetAsync<IList<GradeDTO>>(redisKey)
+                string str = await this.ExecRedisAsync("DomainCacheDBPool", async rc =>
+                     await rc.GetAsync<string>(redisKey)
                 );
+
+                list = JsonConvert.DeserializeObject<IList<GradeDTO>>(str);
             }
             catch (Exception ex)
             {
@@ -90,6 +92,31 @@ namespace Domain.ClassModel.Service.Impl
             }
             return list;
         }
+        public async Task<bool> DeleteGradeFromRedisAsync()
+        {
+            bool res=false;
+            string redisKey = "Grade";
+            try
+            {
+                res = await this.ExecRedisAsync("DomainCacheDBPool", async rc =>
+                     await rc.RemoveAsync(redisKey)
+                );
+            }
+            catch (Exception ex)
+            {
+                LogErrorAsync($"从redis获取年级异常信息{ex.Message}");
+            }
+            return res;
+        }
+
+      
+
+
+        
+
+
+
+
 
         public async Task<bool> UpdateGradeNameAsync(long gradeId, string gradeName)
         {

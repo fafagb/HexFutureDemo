@@ -17,7 +17,7 @@ namespace Domain.StudentModel.Service.Interface
         /// </summary>
         /// <param name="classIds"></param>
         /// <returns></returns>
-        Task<IList<Student>> SelectStudent(List<long> students);
+        Task<IList<Student>> SelectStudent(List<long> students,string studentName);
 
 
 

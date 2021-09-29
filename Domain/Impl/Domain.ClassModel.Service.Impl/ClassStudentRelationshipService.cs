@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using EntAppFrameWork.DomainModel.Core.Specification;
+
 namespace Domain.ClassModel.Service.Impl
 {
     public class ClassStudentRelationshipService : DomainServiceExtBase<ClassStudentRelationship, long>, IClassStudentRelationship
@@ -20,7 +22,7 @@ namespace Domain.ClassModel.Service.Impl
             {
 
 
-                var entity = await this.Where(entity => entity.Student.Key == studentId).Top(1).FindTopAsync();
+                var entity = await this.Where(x => x.Student.Key == studentId).Top(1).FindTopAsync();
 
                 if (entity.Count > 0)
                 {
@@ -109,9 +111,53 @@ namespace Domain.ClassModel.Service.Impl
 
         public async Task<List<long>> SearchClassStudentRelationshipAsync(List<long> classIds)
         {
-            var list = await Where(x => classIds.Equals(x.GClass.Key)).SearchNPAsync();
+            //  var list = await Where(x => classIds.Equals(x.GClass.Key)).SearchNPAsync();
+            IList<ISpecification> specList = new List<ISpecification>();
+            specList.Add(SpecIn<ClassStudentRelationship>(c => c.GClass.Key, classIds.ToArray()));
+
+            var list = await this.Where<ClassStudentRelationship, long>(And<ClassStudentRelationship>(specList)).SearchNPAsync();
             return list.Select(x => x.Student.Key).ToList();
 
         }
+
+
+
+
+        public async Task<bool> DeleteClassStudentRelationshipAsync(long studentId, long classId)
+        {
+            bool res = false;
+            try
+            {
+             var  entity= await   Where(x=>x.Student.Key== studentId&&x.GClass.Key== classId).Top(1).FindTopAsync(); ;
+                res = await RemoveAsync(new ClassStudentRelationship(entity[0].Key));
+            }
+            catch (Exception ex)
+            {
+                LogErrorAsync($"删除学生班级关系异常信息{ex.Message.ToString()}");
+            }
+            return res;
+        }
+
+
+
+
+        public async Task<bool> DeleteClassStudentRelationshipAsync(long classId)
+        {
+            bool res = false;
+            try
+            {
+                var list = await Where(x=>x.GClass.Key == classId).SearchNPAsync() ;
+                res = await RemoveAsync(list);
+            }
+            catch (Exception ex)
+            {
+                LogErrorAsync($"删除学生班级关系异常信息{ex.Message.ToString()}");
+            }
+            return res;
+        }
+
+
+
+
     }
 }

@@ -5,6 +5,8 @@ using Domain.StudentModel.Core;
 using Domain.StudentModel.DTO;
 using Domain.StudentModel.Service.Interface;
 using EntAppFrameWork.DomainModel.Core.Service;
+using EntAppFrameWork.DomainModel.Core.Specification;
+
 namespace Domain.StudentModel.Service.Impl
 {
     public class StudentService : DomainServiceExtBase<Student, long>, IStudent
@@ -14,8 +16,8 @@ namespace Domain.StudentModel.Service.Impl
             long studentId = 0;
             try
             {
-
-                var entity = await this.Where(entity => entity.Name == studentDTO.StudentCode).Top(1).FindTopAsync();
+                string code = studentDTO.StudentCode;
+                var entity = await this.Where(entity => entity.StudentCode == code).Top(1).FindTopAsync();
                 if (entity.Count > 0) return studentId;
 
                 Student student = new Student();
@@ -36,12 +38,17 @@ namespace Domain.StudentModel.Service.Impl
             return studentId;
         }
 
-        public async Task<IList<Student>> SelectStudent(List<long> students)
+        public async Task<IList<Student>> SelectStudent(List<long> students, string studentName)
         {
-           return await Where(x => students.Equals(x.Key)).SearchNPAsync();
-            
-            
-                    
+            IList<ISpecification> specList = new List<ISpecification>();
+            specList.Add(SpecIn<Student>(c => c.Key, students.ToArray()));
+            if (!string.IsNullOrEmpty(studentName))
+            {
+                specList.Add(Equal<Student>(x => x.Name == studentName));
+            }
+            var list = await this.Where<Student, long>(And<Student>(specList)).SearchNPAsync();
+            return list;
+
         }
 
 

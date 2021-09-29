@@ -2,7 +2,7 @@
   "profiles": {
     "ManageClassDomainServer": {
       "commandName": "Project",
-      "commandLineArgs": "--serviceName manageClass-gb --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181        --zkAppRole Demo-ReadEbook   --aop off  --minThreadCount 10 --serviceAddress  debugfcj:tcp://localhost:20010  --runScope Core991 --msGroup zw5 --zkTimeOut 5000 --mcTimeOut 1000000  --debugCompile true    --trace file   --ser protobuf  --KPversion  2   --psapp v2"
+      "commandLineArgs": "--serviceName manageClass-gb --zkConfigServer w1.confandsa.zk.group.hex.com:2181,w2.confandsa.zk.group.hex.com:2181,w3.confandsa.zk.group.hex.com:2181        --zkAppRole Demo-ReadEbook   --aop off  --minThreadCount 10 --serviceAddress  debuggb:tcp://localhost:20010  --runScope Core991 --msGroup zw5 --zkTimeOut 5000 --mcTimeOut 1000000  --debugCompile true    --trace file   --ser protobuf  --KPversion  2   --psapp v2"
     }
   }
 }

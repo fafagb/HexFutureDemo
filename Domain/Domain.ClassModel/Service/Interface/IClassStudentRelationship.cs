@@ -20,5 +20,13 @@ namespace Domain.ClassModel.Service.Interface
 
 
         Task<List<long>> SearchClassStudentRelationshipAsync(List<long> classIds);
+
+
+
+        Task<bool> DeleteClassStudentRelationshipAsync(long studentId,long classId);
+
+
+
+        Task<bool> DeleteClassStudentRelationshipAsync(long classId);
     }
 }

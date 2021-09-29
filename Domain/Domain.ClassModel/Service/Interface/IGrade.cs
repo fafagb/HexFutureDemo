@@ -14,5 +14,12 @@ namespace Domain.ClassModel.Service.Interface
         Task<bool> SaveGradeToRedisAsync(IList<GradeDTO> grades);
         Task<IList<GradeDTO>> SearchGradeFromRedisAsync();
         Task<bool> UpdateGradeNameAsync(long gradeId, string gradeName);
+
+
+        Task<bool> DeleteGradeFromRedisAsync();
+
+
+
+        
     }
 }

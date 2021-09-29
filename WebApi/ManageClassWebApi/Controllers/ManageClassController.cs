@@ -58,12 +58,12 @@ namespace ManageClassWebApi.Controllers
         /// </summary>
         /// <param name="classDTO"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<bool> DeleteClassAsync([FromBody] ClassDTO classDTO)
+        [HttpGet]
+        public async Task<bool> DeleteClassAsync(long classId)
         {
-            if (classDTO.ClassId == 0)
+            if (classId == 0)
                 return false;
-            return await this.InvokeService<IClass>().DeleteClassAsync(classDTO.ClassId);
+            return await this.InvokeService<IClass>().DeleteClassAsync(classId);
         }
         /// <summary>
         /// 修改班级名称
@@ -177,10 +177,10 @@ namespace ManageClassWebApi.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<bool> SaveClassCategoriesToRedisAsync()
+        public async Task<bool> SaveGradeToRedisAsync()
         {
-            IList<GradeDTO> repClassCategories = await SearchGradeAsync("");
-            bool res = await this.InvokeService<IGrade>().SaveGradeToRedisAsync(repClassCategories);
+            IList<GradeDTO> repGrade = await SearchGradeAsync("");
+            bool res = await this.InvokeService<IGrade>().SaveGradeToRedisAsync(repGrade);
             return res;
         }
 
@@ -194,6 +194,22 @@ namespace ManageClassWebApi.Controllers
             IList<GradeDTO> list = await this.InvokeService<IGrade>().SearchGradeFromRedisAsync();
             return list;
         }
+
+
+
+        /// <summary>
+        /// 从redis删除年级
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<bool> DeleteGradeFromRedisAsync()
+        {
+             await this.InvokeService<IGrade>().DeleteGradeFromRedisAsync();
+            return true;
+        }
+
+
+
 
         #endregion
 
@@ -248,6 +264,18 @@ namespace ManageClassWebApi.Controllers
             }
             return repRelationship;
         }
+
+        [HttpGet]
+        public async Task<bool> DeleteClassStudentRelationshipAsync(long studentId, long classId)
+        {
+
+            return await this.InvokeService<IClassStudentRelationship>().DeleteClassStudentRelationshipAsync(studentId, classId);
+        }
+
+
+     
+
+
         #endregion
     }
 }

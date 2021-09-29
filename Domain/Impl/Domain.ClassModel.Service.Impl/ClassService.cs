@@ -59,15 +59,29 @@ namespace Domain.ClassModel.Service.Impl
         }
 
 
-        // 5、单表删除
-        //（1）学生移除班级
 
+        /// <summary>
+        /// 删除班级，并移除班级下的学生
+        /// </summary>
+        /// <param name="classId"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteClassAsync(long classId)
         {
             bool res = false;
             try
             {
-                res = await RemoveAsync(new GClass(classId));
+
+                await this.TranAndSCExecuterAsync(async () =>
+                {
+
+
+                    res = await this.InvokeService<IClassStudentRelationship>().DeleteClassStudentRelationshipAsync(classId);
+                    res = await RemoveAsync(new GClass(classId));
+
+
+                  
+
+                });
             }
             catch (Exception ex)
             {
@@ -122,12 +136,13 @@ namespace Domain.ClassModel.Service.Impl
         public async Task<IList<Student>> SelectStudentByMulCons(long gradeId, string className, string studentName)
         {
 
-
+            IList<Student> studentList = new List<Student>();
             var list = await SearchClassesAsync(gradeId, className);
+            if (list.Count == 0) return studentList;
             var classIds = list.Select(x => x.Key).ToList();
             var students = await this.InvokeService<IClassStudentRelationship>().SearchClassStudentRelationshipAsync(classIds);
-
-            return await this.InvokeService<IStudent>().SelectStudent(students);
+            if (students.Count == 0) return studentList;
+            return await this.InvokeService<IStudent>().SelectStudent(students, studentName);
 
 
         }
