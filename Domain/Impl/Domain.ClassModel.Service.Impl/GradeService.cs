@@ -56,7 +56,7 @@ namespace Domain.ClassModel.Service.Impl
             return res;
         }
 
-        public async Task<IList<Grade>> SearchClassCategoriesAsync(string gradeName)
+        public async Task<IList<Grade>> SearchGradesAsync(string gradeName)
         {
             IList<Grade> grades = new List<Grade>();
             try

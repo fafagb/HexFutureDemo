@@ -9,7 +9,7 @@ namespace Domain.ClassModel.Service.Interface
     public interface IGrade
     {
         Task<long> CreateGradeAsync(string gradeName);
-        Task<IList<Grade>> SearchClassCategoriesAsync(string gradeName);
+        Task<IList<Grade>> SearchGradesAsync(string gradeName);
 
         Task<bool> SaveGradeToRedisAsync(IList<GradeDTO> grades);
         Task<IList<GradeDTO>> SearchGradeFromRedisAsync();

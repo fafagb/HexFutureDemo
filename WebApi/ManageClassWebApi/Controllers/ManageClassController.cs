@@ -146,17 +146,17 @@ namespace ManageClassWebApi.Controllers
         [HttpGet]
         public async Task<IList<GradeDTO>> SearchGradeAsync(string gradeName)
         {
-            IList<GradeDTO> repClassCategories = new List<GradeDTO>();
-            IList<Grade> list = await this.InvokeService<IGrade>().SearchClassCategoriesAsync(gradeName);
+            IList<GradeDTO> repGrades = new List<GradeDTO>();
+            IList<Grade> list = await this.InvokeService<IGrade>().SearchGradesAsync(gradeName);
             foreach (var item in list)
             {
-                repClassCategories.Add(new GradeDTO()
+                repGrades.Add(new GradeDTO()
                 {
                     GradeId = item.Key,
                     GradeName = item.Name
                 });
             }
-            return repClassCategories;
+            return repGrades;
         }
         /// <summary>
         /// 修改年级分类
